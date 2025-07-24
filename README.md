@@ -18,9 +18,7 @@ This project is a simple e-commerce backend built using Django REST Framework. I
 ### 🛒 Cart
 | Method | URL | Description |
 |--------|-----|-------------|
-| `GET` | `/cart/items/` | Get current user's cart items |
-| `POST` | `/cart/add/` | Add product to cart |
-| `DELETE` | `/cart/remove/<int:product_id>/` | Remove product from cart |
+| `GET/POST` | `/cart/` | Get current user's cart items | Post cart items
 
 ### 📦 Order
 | Method | URL | Description |
@@ -37,10 +35,17 @@ This project is a simple e-commerce backend built using Django REST Framework. I
 | `GET/PUT` | `/user/profile/` | Get or update user profile |
 
 ### 🧾 Products & Filtering
-| Method | URL | Description |
-|--------|-----|-------------|
-| `GET` | `/products/` | List products (supports filters like category, price, in stock) |
-| `GET` | `/products/<int:id>/` | Retrieve a single product by ID |
+### Method	URL	Description
+GET	/products/	List all products
+GET	/products/?category=<id>	Filter products by category ID
+GET	/products/?min_price=<value>	Filter products with price greater than or equal to value
+GET	/products/?max_price=<value>	Filter products with price less than or equal to value
+GET	/products/?in_stock=true	Filter products in stock (stock > 0)
+GET	/products/?in_stock=false	Filter products out of stock (stock ≤ 0)
+GET	/products/<int:id>/	Retrieve a single product by ID
+POST	/products/	Create a new product (requires authentication)
+PUT	/products/<int:id>/	Update an existing product (requires authentication)
+DELETE	/products/<int:id>/	Delete a product (requires authentication)
 
 ---
 
